@@ -2,4 +2,4 @@
 
 
 Some practices I did during my spare time.... 
-Python version 3.5. 
+(Python version = 3.5)
