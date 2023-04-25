@@ -1,6 +1,10 @@
-SELECT date_trunc('day', transaction_time) AS transaction_day,
+with etc as (SELECT date_trunc('day', transaction_time) AS transaction_day,
        -- SUM(transaction_amount) AS total_amount,
        AVG(SUM(transaction_amount)) OVER (ORDER BY date_trunc('day', transaction_time) ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS rolling_average
 FROM transactions
 GROUP BY transaction_day
-ORDER BY transaction_day;
+ORDER BY transaction_day)
+
+select *
+ from etc 
+ where transaction_day = '2023-01-31';
